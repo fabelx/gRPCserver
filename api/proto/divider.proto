@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "./";
+
+service Divider {
+  rpc Divide(DivideRequest) returns (DivideResponse) {}
+}
+
+message DivideRequest {
+  int32 x = 1;
+  int32 y = 2;
+}
+
+message DivideResponse {
+  int32 result = 1;
+  string error = 2;
+}
