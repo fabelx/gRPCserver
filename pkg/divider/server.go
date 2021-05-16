@@ -2,7 +2,7 @@ package divider
 
 import (
 	"fmt"
-	api "gRPCserver/pkg/api"
+	api "github.com/fabelx/gRPCserver/pkg/api"
 	"golang.org/x/net/context"
 )
 
