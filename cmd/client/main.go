@@ -3,7 +3,9 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	api "github.com/fabelx/gRPCserver/pkg/api"
+	"github.com/fabelx/gRPCserver/pkg/config"
 	"google.golang.org/grpc"
 	"log"
 	"strconv"
@@ -15,6 +17,9 @@ func main() {
 	if flag.NArg() < 2 {
 		log.Fatal("Need two arguments (type: int).")
 	}
+
+	conf := config.GetConfig()
+	port := fmt.Sprintf(":%s", conf.Port)
 
 	x, err := strconv.Atoi(flag.Arg(0))
 
@@ -28,7 +33,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	conn, err := grpc.Dial(":8191", grpc.WithInsecure())
+	conn, err := grpc.Dial(port, grpc.WithInsecure())
 
 	if err != nil {
 		log.Fatal(err)

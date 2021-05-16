@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	api "github.com/fabelx/gRPCserver/pkg/api"
+	"github.com/fabelx/gRPCserver/pkg/config"
 	"github.com/fabelx/gRPCserver/pkg/divider"
 	"google.golang.org/grpc"
 	"log"
@@ -9,11 +11,13 @@ import (
 )
 
 func main() {
+	conf := config.GetConfig()
+	port := fmt.Sprintf(":%s", conf.Port)
 	s := grpc.NewServer()
 	srv := &divider.Server{}
 	api.RegisterDividerServer(s, srv)
 
-	l, err := net.Listen("tcp", ":8191")
+	l, err := net.Listen("tcp", port)
 
 	if err != nil {
 		log.Fatal(err)
