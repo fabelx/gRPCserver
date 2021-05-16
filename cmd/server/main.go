@@ -1,8 +1,8 @@
 package main
 
 import (
-	api "gRPCserver/pkg/api"
-	"gRPCserver/pkg/divider"
+	api "github.com/fabelx/gRPCserver/pkg/api"
+	"github.com/fabelx/gRPCserver/pkg/divider"
 	"google.golang.org/grpc"
 	"log"
 	"net"
